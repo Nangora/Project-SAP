@@ -121,6 +121,13 @@
           "target": [
             "TargetGoodsIssue"
           ]
+        },
+        {
+          "name": "RouteGoodsReceipt",
+          "pattern": "goodsreceipt",
+          "target": [
+            "TargetGoodsReceipt"
+          ]
         }
       ],
       "targets": {
@@ -147,6 +154,11 @@
           "transition": "slide",
           "viewId": "GoodsIssue",
           "viewName": "GoodsIssue"
+        },
+        "TargetGoodsReceipt": {
+          "viewId": "GoodsReceipt",
+          "viewName": "GoodsReceipt",
+          "viewLevel": 1
         }
       }
     },
