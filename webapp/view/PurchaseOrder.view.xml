@@ -1,0 +1,72 @@
+<mvc:View
+    controllerName="zsupplychain.supplychainsystem.controller.PurchaseOrder"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page id="poPage" title="Danh sách Purchase Order" showNavButton="true" navButtonPress=".onNavBack">
+        <content>
+            <VBox id="_IDGenVBox2" class="sapUiSmallMargin">
+                
+                <Toolbar id="_IDGenToolbar1" class="sapUiSmallMarginBottom">
+                    <Label id="_IDGenLabel2" text="Số PO (EBELN)" />
+                    <Input id="poInput" width="200px" placeholder="Nhập số đơn hàng..." submit=".onFilter" />
+                    <Button id="_IDGenButton4" text="Filter" icon="sap-icon://filter" press=".onFilter" type="Emphasized" />
+                    <Button id="_IDGenButton5" text="Clear" icon="sap-icon://decline" press=".onClear" />
+                </Toolbar>
+
+                <Table id="poTable" items="{/PurchaseOrderSet}" growing="true" growingThreshold="20">
+                    <headerToolbar>
+                        <OverflowToolbar id="_IDGenOverflowToolbar">
+                            <Title id="_IDGenTitle" text="Danh sách đơn hàng" />
+                            <ToolbarSpacer id="_IDGenToolbarSpacer2" />
+                            <Button id="_IDGenButton6" 
+                                text="Create PO" 
+                                icon="sap-icon://add" 
+                                type="Accept" 
+                                press=".onOpenCreatePODialog" />
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    
+                    <columns>
+                        <Column id="_IDGenColumn13">
+                            <Text id="_IDGenText28" text="Số PO" />
+                        </Column>
+                        <Column id="_IDGenColumn14">
+                            <Text id="_IDGenText29" text="Loại (Type)" />
+                        </Column>
+                        <Column id="_IDGenColumn15">
+                            <Text id="_IDGenText30" text="Nhà cung cấp" />
+                        </Column>
+                        <Column id="_IDGenColumn16">
+                            <Text id="_IDGenText31" text="Vật tư" />
+                        </Column>
+                        <Column id="_IDGenColumn17" hAlign="End">
+                            <Text id="_IDGenText32" text="Số lượng" />
+                        </Column>
+                        <Column id="_IDGenColumn18" hAlign="End">
+                            <Text id="_IDGenText33" text="Đơn giá" />
+                        </Column>
+                        <Column id="_IDGenColumn19">
+                            <Text id="_IDGenText34" text="Plant" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem id="_IDGenColumnListItem2">
+                            <cells>
+                                <ObjectIdentifier id="_IDGenObjectIdentifier" title="{EBELN}" />
+                                <Text id="_IDGenText35" text="{BSART}" />
+                                <Text id="_IDGenText36" text="{LIFNR}" />
+                                <Text id="_IDGenText37" text="{MATNR}" />
+                                <Text id="_IDGenText38" text="{MENGE}" />
+                                <ObjectNumber id="_IDGenObjectNumber1" number="{NETPR}" unit="{BUKRS}" />
+                                <Text id="_IDGenText39" text="{WERKS}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

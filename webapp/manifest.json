@@ -1,0 +1,160 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "zsupplychain.supplychainsystem",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.4",
+      "toolsId": "d75203f8-dc3a-4dc9-86ef-69271372945a"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/Z_371_SUPPLY_CHAIN_SRV/?sap-client=324",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.33",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zsupplychain.supplychainsystem.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "zsupplychain.supplychainsystem.view",
+        "controlAggregation": "pages",
+        "controlId": "appContainer",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteHome",
+          "pattern": "",
+          "target": [
+            "TargetHome"
+          ]
+        },
+        {
+          "name": "RouteMaterial",
+          "pattern": "material",
+          "target": [
+            "TargetMaterial"
+          ]
+        },
+        {
+          "name": "RouteStock",
+          "pattern": "stock",
+          "target": [
+            "TargetStock"
+          ]
+        },
+        {
+          "name": "RoutePurchaseOrder",
+          "pattern": "purchaseorder",
+          "target": [
+            "TargetPurchaseOrder"
+          ]
+        },
+        {
+          "name": "RouteGoodsIssue",
+          "pattern": "goodsissue",
+          "target": [
+            "TargetGoodsIssue"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetHome": {
+          "viewId": "Home",
+          "viewName": "Home"
+        },
+        "TargetMaterial": {
+          "viewId": "Material",
+          "viewName": "Material"
+        },
+        "TargetStock": {
+          "viewId": "Stock",
+          "viewName": "Stock"
+        },
+        "TargetPurchaseOrder": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "PurchaseOrder",
+          "viewName": "PurchaseOrder"
+        },
+        "TargetGoodsIssue": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "GoodsIssue",
+          "viewName": "GoodsIssue"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "zsupplychain.supplychainsystem.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

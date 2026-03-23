@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog id="giDialog" title="Thực hiện Xuất kho">
+        <content>
+            <f:SimpleForm id="_IDGenSimpleForm" editable="true" layout="ResponsiveGridLayout">
+                <f:content>
+
+                    <Label id="_IDGenLabel8" text="Sales Order (VBELN)" required="true" />
+                    <Input id="inputVBELN" placeholder="0000006142" />
+
+                    <Label id="_IDGenLabel12" text="Item No (POSNR)" required="true" />
+                    <Input id="inputPOSNR" value="000010" />
+
+                    <Label id="_IDGenLabel13" text="Số lượng xuất (LFIMG)" required="true" />
+                    <Input id="inputLFIMG" type="Number" placeholder="Nhập số lượng..." />
+
+                    <Label id="_IDGenLabel14" text="Nhà máy (WERKS)" required="true" />
+                    <Input id="inputWERKS" value="FU24" />
+
+                    <Label id="_IDGenLabel15" text="Kho (LGORT)" required="true" />
+                    <Input id="inputLGORT" value="TG01" />
+
+                    <Label id="_IDGenLabel16" text="Ngày ghi sổ (BUDAT)" />
+                    <DatePicker
+                        id="inputBUDAT"
+                        displayFormat="dd/MM/yyyy"
+                        valueFormat="yyyyMMdd" />
+
+                </f:content>
+            </f:SimpleForm>
+        </content>
+
+        <beginButton>
+            <Button id="_IDGenButton11" text="Xác nhận Xuất" type="Emphasized" press=".onSaveGI" />
+        </beginButton>
+
+        <endButton>
+            <Button id="_IDGenButton12" text="Hủy" press=".onCloseGIDialog" />
+        </endButton>
+    </Dialog>
+
+</core:FragmentDefinition>

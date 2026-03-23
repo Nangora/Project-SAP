@@ -1,0 +1,40 @@
+<mvc:View
+    controllerName="zsupplychain.supplychainsystem.controller.Stock"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="stockPage" title="Quản lý Tồn kho" showNavButton="true" navButtonPress=".onNavBack">
+    <content>
+    <VBox id="_IDGenVBox" class="sapUiSmallMargin">
+        <Toolbar id="_IDGenToolbar" class="sapUiSmallMarginBottom">
+            <Label id="_IDGenLabel" text="Vật tư" />
+            <Input id="stockInput" width="200px" placeholder="Mã vật tư..." submit=".onFilter" />
+            <Label id="_IDGenLabel1" text="Plant" />
+            <Input id="plantInput" width="100px" placeholder="Nhà máy..." submit=".onFilter" />
+            <Button id="_IDGenButton1" text="Filter" icon="sap-icon://filter" press=".onFilter" type="Emphasized" />
+            <Button id="_IDGenButton3" text="Clear" icon="sap-icon://decline" press=".onClear" />
+        </Toolbar>
+
+        <Table id="stockTable" items="{/StockSet}" growing="true">
+            <columns>
+                <Column id="_IDGenColumn"><Text id="_IDGenText" text="Material" /></Column>
+                <Column id="_IDGenColumn1"><Text id="_IDGenText1" text="Tên vật tư" /></Column>
+                <Column id="_IDGenColumn2"><Text id="_IDGenText2" text="Plant" /></Column>
+                <Column id="_IDGenColumn3"><Text id="_IDGenText3" text="Kho" /></Column>
+                <Column id="_IDGenColumn4" hAlign="End"><Text id="_IDGenText4" text="Số lượng" /></Column>
+            </columns>
+            <items>
+                <ColumnListItem id="_IDGenColumnListItem1">
+                    <cells>
+                        <Text id="_IDGenText5" text="{Matnr}" />
+                        <Text id="_IDGenText6" text="{Maktx}" />
+                        <Text id="_IDGenText7" text="{Werks}" />
+                        <Text id="_IDGenText8" text="{Lgort}" />
+                        <Text id="_IDGenText9" text="{Labst}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
+    </content>
+    </Page>
+</mvc:View>

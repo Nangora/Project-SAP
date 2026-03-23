@@ -1,0 +1,79 @@
+<mvc:View
+    controllerName="zsupplychain.supplychainsystem.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+
+    <Page id="_IDGenPage1" title="Trang chủ - Hệ thống Quản lý Cung ứng">
+        <content>
+            <HBox id="_IDGenHBox" class="sapUiSmallMargin" wrap="Wrap">
+
+                <GenericTile 
+                    id="_IDGenGenericTile" 
+                    class="sapUiTinyMargin" 
+                    header="Danh mục Vật tư" 
+                    subheader="Quản lý Material" 
+                    press=".onPressMaterial">
+                    <tileContent>
+                        <TileContent id="_IDGenTileContent">
+                            <ImageContent id="_IDGenImageContent" src="sap-icon://inventory" />
+                        </TileContent>
+                    </tileContent>
+                </GenericTile>
+
+                <GenericTile 
+                    id="_IDGenGenericTile1" 
+                    class="sapUiTinyMargin" 
+                    header="Quản lý Tồn kho" 
+                    subheader="Xem số lượng tồn" 
+                    press=".onPressStock">
+                    <tileContent>
+                        <TileContent id="_IDGenTileContent1">
+                            <ImageContent id="_IDGenImageContent1" src="sap-icon://shipping-status" />
+                        </TileContent>
+                    </tileContent>
+                </GenericTile>
+
+                <GenericTile 
+                    id="tilePurchaseOrder" 
+                    class="sapUiTinyMargin" 
+                    header="Đơn mua hàng" 
+                    subheader="Purchase Order (PO)" 
+                    press=".onPressPurchaseOrder">
+                    <tileContent>
+                        <TileContent id="_IDGenTileContentPO">
+                            <ImageContent id="_IDGenImageContentPO" src="sap-icon://sales-order" />
+                        </TileContent>
+                    </tileContent>
+                </GenericTile>
+
+                <GenericTile 
+                    id="_IDGenGenericTile2" 
+                    class="sapUiTinyMargin" 
+                    header="Lịch sử Nhập kho" 
+                    subheader="Goods Receipt" 
+                    press=".onPressGoodsReceipt">
+                    <tileContent>
+                        <TileContent id="_IDGenTileContent2">
+                            <ImageContent id="_IDGenImageContent3" src="sap-icon://inbox" />
+                        </TileContent>
+                    </tileContent>
+                </GenericTile>
+
+                <GenericTile 
+                    id="_IDGenGenericTile3" 
+                    class="sapUiTinyMargin"
+                    header="Xuất kho" 
+                    subheader="Goods Issue" 
+                    press=".onPressGoodsIssue">
+                    <tileContent>
+                        <TileContent id="_IDGenTileContent3">
+                            <ImageContent id="_IDGenImageContent4" src="sap-icon://delivery-truck" />
+                        </TileContent>
+                    </tileContent>
+                </GenericTile>
+
+            </HBox>
+        </content>
+    </Page>
+</mvc:View>
