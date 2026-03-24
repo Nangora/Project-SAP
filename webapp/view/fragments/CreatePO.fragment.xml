@@ -2,39 +2,44 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:f="sap.ui.layout.form">
-    <Dialog id="createPODialog" title="Tạo mới Purchase Order">
+    <Dialog id="createPODialog" title="Create New Purchase Order">
         <content>
             <f:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout">
                 <f:content>
-                    <Label id="_IDGenLabel3" text="Loại PO (BSART)" required="true" />
-                    <Input id="inputBSART" placeholder="Ví dụ: NB" />
+                    <Label id="_IDGenLabel3" text="Order Type (BSART)" required="true" />
+                    <Input id="inputBSART" placeholder="e.g. NB" />
 
-                    <Label id="_IDGenLabel4" text="Nhà cung cấp (LIFNR)" required="true" />
-                    <Input id="inputLIFNR" placeholder="0000101125" />
+                    <Label id="_IDGenLabel4" text="Vendor (LIFNR)" required="true" />
+                    <Input id="inputLIFNR" placeholder="e.g. 0000101125" />
 
-                    <Label id="_IDGenLabel5" text="Vật tư (MATNR)" required="true" />
-                    <Input id="inputMATNR" placeholder="ZDXTR1140" />
+                    <Label id="_IDGenLabel5" text="Material (MATNR)" required="true" />
+                    <Input id="inputMATNR" placeholder="e.g. ZDXTR1140" />
 
-                    <Label id="_IDGenLabel6" text="Số lượng (MENGE)" />
+                    <Label id="_IDGenLabel6" text="Quantity (MENGE)" />
                     <StepInput id="inputMENGE" value="1" min="1" />
+                    
+                    <Label id="_IDGenLabel7" text="Net Price (NETPR)" />
+                    <Input id="inputNETPR" placeholder="0.00" type="Number" />
 
-                    <Label id="_IDGenLabel7" text="Nhà máy (WERKS)" />
-                    <Input id="inputWERKS" placeholder="DL00" />
-                    <Label id="_IDGenLabel9" text="Công ty (BUKRS)" required="true" />
-                    <Input id="inputBUKRS" placeholder="Ví dụ: US00" />
-                    <Label id="_IDGenLabel10" text="Tổ chức mua hàng (EKORG)" required="true" />
-                    <Input id="inputEKORG" placeholder="Ví dụ: US00" />
-                     <Label id="_IDGenLabel11" text="Nhóm mua hàng (EKGRP)" />
-                     <Input id="inputNETPR" placeholder="Đơn giá" />
-                     <Input id="inputEKGRP" placeholder="Ví dụ: 237" /> 
+                    <Label id="_IDGenLabel9" text="Plant (WERKS)" />
+                    <Input id="inputWERKS" placeholder="e.g. DL00" />
+
+                    <Label id="_IDGenLabel10" text="Company Code (BUKRS)" required="true" />
+                    <Input id="inputBUKRS" placeholder="e.g. US00" />
+
+                    <Label id="_IDGenLabel11" text="Purchasing Org (EKORG)" required="true" />
+                    <Input id="inputEKORG" placeholder="e.g. US00" />
+
+                    <Label id="_IDGenLabel17" text="Purchasing Group (EKGRP)" />
+                    <Input id="inputEKGRP" placeholder="e.g. 237" /> 
                 </f:content>
             </f:SimpleForm>
         </content>
         <beginButton>
-            <Button id="_IDGenButton7" text="Lưu đơn" type="Emphasized" press=".onSavePO" />
+            <Button id="_IDGenButton8" text="Save Order" type="Emphasized" press=".onSavePO" />
         </beginButton>
         <endButton>
-            <Button id="_IDGenButton8" text="Hủy" press=".onClosePODialog" />
+            <Button id="_IDGenButton10" text="Cancel" press=".onClosePODialog" />
         </endButton>
     </Dialog>
 </core:FragmentDefinition>

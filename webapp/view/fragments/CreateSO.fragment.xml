@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+    <Dialog id="createSODialog" title="Tạo mới đơn hàng">
+        <content>
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label text="Khách hàng (Sold-to)" required="true" />
+                    <Input id="inputSoldTo" placeholder="Ví dụ: 0000101000" />
+                    <Label text="Vật tư (Material)" required="true" />
+                    <Input id="inputMat" placeholder="Ví dụ: ZDXTR1140" />
+                    <Label text="Số lượng" />
+                    <StepInput id="inputQty" value="1" min="1" />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button text="Lưu" type="Emphasized" press=".onSaveSO" />
+        </beginButton>
+        <endButton>
+            <Button text="Hủy" press=".onCloseSODialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
+

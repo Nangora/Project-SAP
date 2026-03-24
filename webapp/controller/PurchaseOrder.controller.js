@@ -61,7 +61,7 @@ sap.ui.define([
 
         onSavePO: function () {
             var oModel = this.getOwnerComponent().getModel();
-            
+
             // Thu thập dữ liệu từ Dialog
             var oPayload = {
                 "EBELN": "",
@@ -70,7 +70,8 @@ sap.ui.define([
                 "MATNR": this.byId("inputMATNR").getValue(),
                 "MENGE": this.byId("inputMENGE").getValue().toString(),
                 "WERKS": this.byId("inputWERKS").getValue(),
-                "NETPR": this.byId("inputNETPR").getValue().toString(),
+                // Sửa dòng này để lấy đúng giá trị số, nếu trống sẽ gửi chuỗi "0.00" để tránh lỗi format SAP
+                "NETPR": this.byId("inputNETPR").getValue() ? this.byId("inputNETPR").getValue().toString() : "0.00",
                 "BUKRS": this.byId("inputBUKRS").getValue(),
                 "EKORG": this.byId("inputEKORG").getValue(),
                 "EKGRP": this.byId("inputEKGRP").getValue()

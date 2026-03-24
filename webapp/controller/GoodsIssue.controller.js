@@ -58,60 +58,55 @@ sap.ui.define([
         },
 
         onSaveGI: function () {
+            // Lấy Model từ View thay vì Component để đảm bảo context
             var oModel = this.getView().getModel();
 
-            // ✅ Lấy ngày
-            var oDate = this.byId("inputBUDAT").getDateValue();
-            var sBudat = this._formatDate(oDate);
-
+            // Thu thập dữ liệu: Tên trường phải CHÍNH XÁC như trong ảnh Metadata
             var oPayload = {
-                "SalesOrder": this.byId("inputVBELN").getValue(),
-                "SalesItem": this.byId("inputPOSNR").getValue(),
-                "Quantity": this.byId("inputLFIMG").getValue().toString(),
+                "SalesOrder": this.byId("inputVBELN").getValue(), // Chữ S và O viết hoa
+                "SalesItem": this.byId("inputPOSNR").getValue(),  // Chữ S và I viết hoa
+                "Quantity": this.byId("inputLFIMG").getValue(),   // Định dạng Edm.Decimal
                 "UoM": "EA",
                 "Plant": this.byId("inputWERKS").getValue(),
                 "StorageLoc": this.byId("inputLGORT").getValue(),
-                "PostingDate": this.byId("inputBUDAT").getDateValue() || new Date()
+                "PostingDate": this.byId("inputBUDAT").getDateValue() // Trả về object Date cho OData
             };
-            console.log("Payload gửi lên SAP:", oPayload);
 
-            // ✅ Validation
-            if (!oPayload.VBELN) {
-                MessageBox.error("Thiếu Sales Order (VBELN)");
+            // --- Validation tiếng Anh (Mã) thân thiện ---
+            if (!oPayload.SalesOrder || !oPayload.SalesItem) {
+                MessageBox.error("Sales Order (VBELN) and Item (POSNR) are required.");
                 return;
             }
-
-            if (!oPayload.LFIMG || oPayload.LFIMG === "0") {
-                MessageBox.error("Số lượng phải > 0");
+            if (!oPayload.Quantity || parseFloat(oPayload.Quantity) <= 0) {
+                MessageBox.error("Quantity (LFIMG) must be greater than 0.");
                 return;
             }
 
             sap.ui.core.BusyIndicator.show(0);
 
+            // Gửi request tới đúng EntitySet: /GoodsIssueSet
             oModel.create("/GoodsIssueSet", oPayload, {
                 success: function (oData) {
                     sap.ui.core.BusyIndicator.hide();
-
-                    var sMsg = oData.MatDoc
-                        ? "Xuất kho thành công! MatDoc: " + oData.MatDoc
-                        : "Xuất kho thành công!";
-
-                    MessageBox.success(sMsg);
-                    this.onCloseGIDialog();
-                    oModel.refresh(true);
+                    // Nếu MatDoc có giá trị tức là SAP đã tạo chứng từ thành công
+                    if (oData.MatDoc) {
+                        MessageBox.success("Goods Issue Successful!\nMaterial Document: " + oData.MatDoc);
+                        this.onCloseGIDialog();
+                        oModel.refresh(true);
+                    } else {
+                        // Hiển thị thông báo nghiệp vụ từ SAP (ví dụ: Thiếu hàng, sai kho...)
+                        MessageBox.warning("SAP Response: " + oData.Message);
+                    }
                 }.bind(this),
-
                 error: function (oError) {
                     sap.ui.core.BusyIndicator.hide();
-
-                    var sErrorMsg = "Lỗi hệ thống";
+                    var sErrorMsg = "Communication Error (500)";
                     try {
                         var oResponse = JSON.parse(oError.responseText);
                         sErrorMsg = oResponse.error.message.value;
                     } catch (e) { }
-
                     MessageBox.error(sErrorMsg);
-                }
+                }.bind(this)
             });
         }
     });
